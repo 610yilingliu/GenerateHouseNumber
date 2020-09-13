@@ -46,7 +46,7 @@ if __name__ == '__main__':
     files = os.listdir(root)
     for f in files:
         path = root + f
-        regularize_img(path, out + f, (64, 64))
+        regularize_img(path, out + f, (32, 32))
 
     outgray = './img_gray/'
     files = os.listdir(out)
