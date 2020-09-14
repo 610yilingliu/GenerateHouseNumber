@@ -126,7 +126,7 @@ for epoch in range(num_epochs):
             print(str(batch_i + 1) + '/' + str(batch_num) + ' batch in epoch ' + str(epoch + 1) + ' is training')
     
     # show picture result and save checkpoint for every output_freq epochs
-    if (epoch + 1) % output_freq == 0 or epoch == num_epochs - 1:
+    if (epoch + 1) % output_freq == 0 or epoch == num_epochs - 1 or epoch == 0:
         checkpoint.save(file_prefix = checkpoint_prefix)
         out = G(fixed_z, training = False)
         out = out.numpy()
