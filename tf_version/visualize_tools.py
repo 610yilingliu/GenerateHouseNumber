@@ -6,7 +6,7 @@ import math
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
-from get_npz import make_dir
+from tf_version.get_npz import make_dir
 
 def de_project(np_arr):
     """
