@@ -52,11 +52,13 @@ class Generator(keras.Model):
         out = self.t_conv1(out)
         if self.bn_1:
             out = self.bn_1(out, training = training)
+
         out = tf.nn.relu(out)
         out = self.t_conv2(out)
         if self.bn_2:
             out = self.bn_2(out, training = training)
         out = tf.nn.relu(out)
+
         out = self.t_conv3(out)
         out = tf.tanh(out)
         ## to HWC format
@@ -107,10 +109,12 @@ class Discriminator(keras.Model):
     def call(self, xx, training = None):
         out = self.conv1(xx)
         out = tf.nn.leaky_relu(out, alpha = 0.2)
+
         out = self.conv2(out)
         if self.bn_1:
             out = self.bn_1(out, training = training)
         out = tf.nn.leaky_relu(out, alpha = 0.2)
+        
         out = self.conv3(out)
         if self.bn_2:
             out = self.bn_2(out, training = training)

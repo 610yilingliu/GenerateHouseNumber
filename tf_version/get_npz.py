@@ -16,6 +16,9 @@ def pic_to_npz(path, outname, target_folder = None):
     files = os.listdir(path)
     for f in files:
         img = cv2.imread(path + '/' + f)
+        # OpenCV convert image to array with BGR format by default, but matplotlib.pyplot requires RGB image so you have to convert it
+        # I got an Avatar-version Trump face without this :)
+        img= cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
         img = img.transpose((2,0,1))
         x.append(img)
     if target_folder is None:
