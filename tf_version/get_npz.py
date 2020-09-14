@@ -22,7 +22,7 @@ def pic_to_npz(path, outname, target_folder = None):
         np.savez(outname, train = x)
     else:
         make_dir(target_folder)
-        np.savez(target_folder + '/' + outname)
+        np.savez(target_folder + '/' + outname, train = x)
 
 def mat_tonpz(mat_file, outname, target_folder = None):
     """
