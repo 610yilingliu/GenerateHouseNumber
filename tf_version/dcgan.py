@@ -48,13 +48,15 @@ class Generator(keras.Model):
         # call in tf is an equivalent with forward in torch
         out = self.fc(xx)
         out = tf.reshape(out, [-1, self.conv_dim * 4, 4, 4])
-        out = tf.nn.relu(out)
+        
         out = self.t_conv1(out)
         if self.bn_1:
             out = self.bn_1(out, training = training)
         out = self.t_conv2(out)
+        out = tf.nn.relu(out)
         if self.bn_2:
             out = self.bn_2(out, training = training)
+        out = tf.nn.relu(out)
         out = self.t_conv3(out)
         out = tf.tanh(out)
         ## to HWC format

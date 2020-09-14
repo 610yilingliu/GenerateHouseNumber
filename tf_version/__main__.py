@@ -126,12 +126,12 @@ for epoch in range(num_epochs):
             print(str(batch_i + 1) + '/' + str(batch_num) + ' batch in epoch ' + str(epoch + 1) + ' is training')
     
     # show picture result and save checkpoint for every output_freq epochs
-    if epoch % output_freq == 0 or epoch == num_epochs:
+    if (epoch + 1) % output_freq == 0 or epoch == num_epochs - 1:
         checkpoint.save(file_prefix = checkpoint_prefix)
         out = G(fixed_z, training = False)
         out = out.numpy()
         out = de_project(out)
-        show_imgs(out, './report_imgs', specific_suf = 'epoch' + str(epoch), show_num = 16)
+        show_imgs(out, './report_imgs', specific_suf = 'epoch' + str(epoch + 1), show_num = 16)
     # every loss will be visualize
     losses.append((float(d_loss), float(g_loss)))
     print ('Time for epoch {} is {} sec'.format(epoch + 1, time.time()-start))
