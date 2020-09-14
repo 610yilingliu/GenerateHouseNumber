@@ -52,8 +52,8 @@ class Generator(keras.Model):
         out = self.t_conv1(out)
         if self.bn_1:
             out = self.bn_1(out, training = training)
-        out = self.t_conv2(out)
         out = tf.nn.relu(out)
+        out = self.t_conv2(out)
         if self.bn_2:
             out = self.bn_2(out, training = training)
         out = tf.nn.relu(out)
@@ -114,6 +114,7 @@ class Discriminator(keras.Model):
         out = self.conv3(out)
         if self.bn_2:
             out = self.bn_2(out, training = training)
+        out = tf.nn.leaky_relu(out, alpha = 0.2)
         out = self.flatten(out)
         out = self.fc(out)
         return out

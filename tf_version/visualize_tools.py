@@ -70,6 +70,7 @@ def show_imgs(np_arr, dest_path, specific_sep = None, specific_suf = None, show_
         print('The file name you defined is ' + name + ', please make sure that there are no system-rejected symbol in file name.\n')
         print('Program terminated...')
         exit(0)
+    plt.close()
 
 ## Export system output to a log file
 class Logger(object):
@@ -96,3 +97,4 @@ def loss_graph(losses, dest_path, name):
     f = plt.gcf()
     plt.draw()
     f.savefig(dest_path + '/' + name)
+    plt.close()

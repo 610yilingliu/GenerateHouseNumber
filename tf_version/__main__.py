@@ -12,7 +12,7 @@ sys.stdout = Logger('./logs/' + logname + '.log')
 
 
 
-FILE_PATH = './data'
+FILE_PATH = './tf_version/data'
 MAT_NAME = 'train_32x32.mat'
 NP_NAME = 'svhm.npz'
 ## save the npz file for feature use, you can also store it in memory without export and re-read it. I/O spend a lots of time
